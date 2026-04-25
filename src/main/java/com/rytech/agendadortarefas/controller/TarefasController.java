@@ -60,8 +60,8 @@ public class TarefasController {
     }
 
     @PutMapping
-    public ResponseEntity<TarefasDTO> atualizaTarefa(@RequestBody TarefasDTO dto,
-                                                     @RequestParam("id") String id) {
+    public ResponseEntity<TarefasDTO> updateTarefas(@RequestBody TarefasDTO dto,
+                                                    @RequestParam("id") String id) {
 
         return ResponseEntity.ok(tarefasService.updateTarefas(dto, id));
 

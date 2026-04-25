@@ -37,7 +37,8 @@ public class TarefasService {
 
     public List<TarefasDTO> buscaTarefasAgendadasPorPeriodo(LocalDateTime dataInicial, LocalDateTime dataFinal) {
 
-        return tarefasConverter.paraListaTarefasDTO(tarefasRepository.findByDataEventoBetween(dataInicial, dataFinal));
+        return tarefasConverter.paraListaTarefasDTO(tarefasRepository.findByDataEventoBetweenAndStatusNotificacaoEnum
+                (dataInicial, dataFinal, StatusNotificacaoEnum.PENDENTE));
     }
 
     public List<TarefasDTO> buscaTarefasPorEmail(String token) {
@@ -51,7 +52,8 @@ public class TarefasService {
         try {
             tarefasRepository.deleteById(id);
         } catch (ResourceNotFoundException e) {
-            throw new ResourceNotFoundException("Erro ao tentar deletar tarefa por id, id inexistente " + id + e.getCause());
+            throw new ResourceNotFoundException(
+                    "Erro ao tentar deletar tarefa por id, id inexistente " + id + e.getCause());
         }
     }
 
