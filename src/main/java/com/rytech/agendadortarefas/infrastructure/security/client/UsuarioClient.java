@@ -1,7 +1,7 @@
 package com.rytech.agendadortarefas.infrastructure.security.client;
 
 
-import com.rytech.agendadortarefas.business.dto.UsuarioDTO;
+import com.rytech.agendadortarefas.business.dto.UsuarioDTORecord;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface UsuarioClient {
 
     @GetMapping("/usuario")
-    UsuarioDTO buscarUsuarioPorEmail(@RequestParam("email") String email,
-                                     @RequestHeader("Authorization") String token);
+    UsuarioDTORecord buscarUsuarioPorEmail(@RequestParam("email") String email,
+                                           @RequestHeader("Authorization") String token);
 }
